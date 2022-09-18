@@ -1,4 +1,4 @@
-Goal: Student should know basic problems involving single loop.
+Goal: Student should know common problems involving single loop.
 
 Write a program to print first N natural numbers in the closed notation as shown below:
 

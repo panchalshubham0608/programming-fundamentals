@@ -1,4 +1,4 @@
-Goal: Student should know basic problems involving single loop.
+Goal: Student should know common problems involving single loop.
 
 Write a program to print first N terms of a `Fibonacci sequence: 0 1 1 2 3 5 8 13 21 ...`  
 
