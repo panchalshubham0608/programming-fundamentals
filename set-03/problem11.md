@@ -16,26 +16,3 @@ Lowercase representation of G is g
 Enter a character: %
 Not an alphabet
 ```
-
-
-
-#### C++ Solution
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-    char ch;
-    cout << "Enter a character: ";
-    cin >> ch;
-
-    if ('a' <= ch && ch <= 'z')
-        cout << "Uppercase representation of " << ch << " is " << (char)(ch - 32) << endl;
-    else if ('A' <= ch && ch <= 'Z')
-        cout << "Lowercase representation of " << ch << " is " << (char)(ch + 32) << endl;
-    else
-        cout << "Not an alphabet" << endl;
-    
-    return 0;
-}
-```

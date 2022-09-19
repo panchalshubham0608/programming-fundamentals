@@ -19,22 +19,3 @@ Enter the loan amount: 67000000
 Enter the unbilled amount: 75000
 You are not eligible for loan
 ```
-
-#### C++ Solution
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-    int loanAmount, unbilledAmount;
-    cout << "Enter the loan amount: ";
-    cin >> loanAmount;
-    cout << "Enter the unbilled amount: ";
-    cin >> unbilledAmount;
-    if (loanAmout > 5000000 && unbilledAmount < 50000) 
-        cout << "You are eligible for loan" << endl;
-    else
-        cout << "You are not eligible for loan" << endl;
-    return 0;
-}
-```

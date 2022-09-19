@@ -11,23 +11,3 @@ Float
 Enter a number: 1.00
 Integer
 ```
-
-#### C++ Solution
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-    float number;
-    cout << "Enter a number: ";
-    cin >> number;
-    
-    int intVal = (int)number;
-    if (intVal == number)
-        cout << "Integer" << endl;
-    else 
-        cout << "Float" << endl;
-    
-    return 0;
-}
-```

@@ -11,24 +11,3 @@ Enter a character: 7
 Enter a character: #
 Not a digit
 ```
-
-
-#### C++ Solution
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-    char ch;
-    cout << "Enter a character: ";
-    cin >> ch;
-
-    if ('0' <= ch && ch <= '9') {
-        int digit = ch - '0';
-        cout << digit << " * 3 = " << (digit*3) << endl;
-    } else {
-        cout << "Not a digit" << endl;
-    }
-    return 0;
-}
-```

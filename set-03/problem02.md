@@ -10,18 +10,3 @@ Greater than 10
 ```c++
 Enter a number: 9
 ```
-
-#### C++ Solution
-```c++
-#include <iostream>
-using namespace std;
-
-int main(){
-    int number;
-    cout << "Enter a number: ";
-    cin >> number;
-    if (number > 10)
-        cout << "Greater than 10" << endl;
-    return 0;
-}
-```

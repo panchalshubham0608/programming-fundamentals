@@ -19,22 +19,3 @@ Enter the bill: 2000
 Do you have membership(0/1)?: 0
 You are not eligible for free delivery
 ```
-
-#### C++ Solution
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-    int bill, hasMembership;
-    cout << "Enter the bill ";
-    cin >> bill;
-    cout << "Do you have membership(0/1)?: ";
-    cin >> hasMembership;
-    if (bill > 5000 || hasMembership == 1) 
-        cout << "You are eligible for free delivery" << endl;
-    else
-        cout << "You are not eligible for free delivery" << endl;
-    return 0;
-}
-```
