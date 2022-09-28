@@ -59,9 +59,9 @@ const writeSourceCodeToFile = (sourceCode, language, dirPath) => {
 // get the test cases for given problemId
 const getTestCases = (problemId) => {
     // remove the trailing file extension
-    problemId = problemId.replace(/\.[^/.]+$/, "");
+    problemId = problemId.replace(".md", ".js")
     let module = path.join(__dirname, '..', 'solution', problemId);
-    if (!fs.existsSync(module)) throw new Error('Invalid problemId');
+    if (!fs.existsSync(module)) throw new Error('A solution for the given problem does not exist! Try again later.\n');
     return require(module);
 };
 
@@ -72,12 +72,11 @@ const executeSourceCode = ({sourceCode, language, problemId, timeout = 1000}) =>
     // get the test cases for given problemId
     let testCases = null;
     try {
-        getTestCases(problemId);
+        testCases = getTestCases(problemId);
     } catch (err) {
-        console.log(err);
         return {
             status: 'error',
-            message: 'Invalid problemId'
+            message: err.message
         };
     }
 
@@ -116,7 +115,6 @@ const executeSourceCode = ({sourceCode, language, problemId, timeout = 1000}) =>
                     input: testCase.input,
                     timeout: timeout
                 });
-                console.log(runOutput.toString());
                 if (runOutput.toString().trim() !== testCase.output) {
                     // output is incorrect
                     result.push({
@@ -158,7 +156,7 @@ const executeSourceCode = ({sourceCode, language, problemId, timeout = 1000}) =>
         // return the result
         return {
             status: 'OK',
-            result
+            testCases: result
         };
     } finally {
         // delete the directory

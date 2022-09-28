@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 const { listAllProblems, readProblem } = require('../util/listfile');
-const { executeSourceCode } = require('../util/executor');
+const executeSourceCode = require('../util/executor');
 
 // the home route
 router.get('/', function(_, res, _) {

@@ -16,6 +16,7 @@
     <link rel='stylesheet' href='/stylesheets/problem-viewer.css' />
     <link rel='stylesheet' href='/stylesheets/editor.css' />
     <link rel='stylesheet' href='/stylesheets/loader.css' />
+    <link rel="stylesheet" href="/stylesheets/output.css">
   </head>
   <body>
     <%- include('./loader.ejs') %>
@@ -38,23 +39,28 @@
           <div class="toolbar">
             <div class="select-language">
               <p>Select your language here</p>
-              <select onchange="javascript:changeLanguage(event)">
-                <option value="c_cpp">C</option>
-                <option value="c_cpp">C++</option>
-                <option value="java">Java</option>
-                <option value="javascript">Javascript</option>
-                <option value="python">Python</option>
+              <select onchange="javascript:changeLanguage(event)" id="language" d-ext="c">
+                <option value="c_cpp" d-ext="c">C</option>
+                <option value="c_cpp" d-ext="cpp">C++</option>
+                <option value="java" d-ext="java">Java</option>
+                <option value="javascript" d-ext="js">Javascript</option>
+                <option value="python" d-ext="py">Python</option>
               </select>  
             </div>
             <div>
-              <button class="btn btn-success" id="runCodeBtn" disabled>
+              <button class="btn btn-success" id="runCodeBtn" onclick="javascript:execute()">
                 <i class="fa-solid fa-play"></i>
                 <span>Run</span>  
               </button>
             </div>
           </div>
           <div id="editor"></div>
-          <div class="result"></div>
+          <div class="output">
+            <p>Your results will be displayed here</p>
+            <hr/>
+            <div id="output"></div>
+          </div>
+          </div>
         </div>
       </div>
     </main>

@@ -64,7 +64,7 @@ function selectProblem(event) {
         // console.log(katex.renderToString(html.replace(/\$(.*)\$/g, "\\\[ $1 \\\] ")));
         // html = katex.renderToString(html);
         let relative = path.split('/problems/')[1];
-        viewer.innerHTML = `<p class="problem-header" id="problemId">${relative}</p>` + html;
+        viewer.innerHTML = `<p class="problem-header" data-id="${relative}" id="problemId">${relative}</p>` + html;
         document.getElementById(`runCodeBtn`).disabled = false;
         hideLoader();
     }

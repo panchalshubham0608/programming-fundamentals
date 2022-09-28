@@ -1,0 +1,16 @@
+.output {
+    padding: 10px;
+    border: 1px solid black;
+    min-height: 200px;
+    margin-top: 20px;
+    overflow: scroll;
+}
+
+#output {
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.text-error {
+   color: #842029;
+}
