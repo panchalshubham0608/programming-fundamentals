@@ -1,17 +1,19 @@
 function makeUI(problem, depth) {
     if (problem.isFile) {
-        if (problem.name.endsWith(".md")) {
+        let name = problem.name.replace(/\.js$/, '.md');
+        let path = problem.path.replace(/\.js$/, '.md');
+        if (name.endsWith(".md")) {
             return `<div class="accordian-item-file" style="margin-left: ${depth}px;">
-                        <div class="accordian-item-file-name" data-path="${problem.path}"
+                        <div class="accordian-item-file-name" data-path="${path}"
                             onclick="javascript:selectProblem(event)">
                             <img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/code-512.png">
-                            ${problem.name}
+                            ${name}
                         </div>
                     </div>`
         } else {
             return ``;
         }
-    } else {
+    } else if (problem.children && problem.children.length > 0) {
         let html = 
         `<div class="accordian" style="margin-left: ${depth}px;">
             <div class="accordian-header">
@@ -29,6 +31,8 @@ function makeUI(problem, depth) {
             </div>
         </div>`
         return html
+    } else {
+        return ``;
     }
 }
 
@@ -63,8 +67,7 @@ function selectProblem(event) {
         // console.log(html.replace(/\$(.*)\$/g, "\\\[ $1 \\\]"))
         // console.log(katex.renderToString(html.replace(/\$(.*)\$/g, "\\\[ $1 \\\] ")));
         // html = katex.renderToString(html);
-        let relative = path.split('/problems/')[1];
-        viewer.innerHTML = `<p class="problem-header" data-id="${relative}" id="problemId">${relative}</p>` + html;
+        viewer.innerHTML = `<p class="problem-header" data-id="${path}" id="problemId">${path}</p>` + html;
         document.getElementById(`runCodeBtn`).disabled = false;
         hideLoader();
     }

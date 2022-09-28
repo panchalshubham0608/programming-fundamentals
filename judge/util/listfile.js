@@ -8,14 +8,14 @@ const readAll = (dir) => {
     if (!fs.statSync(dir).isDirectory()) {
         return {
             name: path.basename(dir),
-            path: dir,
+            path: dir.split('/problems/')[1],
             isFile: true,            
         };
     }
     // read all files in dir
     let result = {
         name: path.basename(dir),
-        path: dir,
+        path: dir.split('/problems/')[1],
         isFile: false,
         children: [],
     };
@@ -40,10 +40,10 @@ const listAll = (result, depth) => {
 }
 
 // read all the problems
-const listAllProblems = () => readAll(path.join(__dirname, '../../problems/'));
+const listAllProblems = () => readAll(path.join(__dirname, '../problems/'));
 
 // read a problem
-const readProblem = (path) => fs.readFileSync(path, 'utf-8');
+const readProblem = (relative) => fs.readFileSync(path.join(__dirname, '../../problems/', relative), 'utf-8');
 
 // export the functions
 module.exports = {

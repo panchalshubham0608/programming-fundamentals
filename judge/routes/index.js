@@ -12,7 +12,6 @@ router.get('/', function(_, res, _) {
 // HTTP REST Endpoint: retrieve a problem
 router.post('/problem', function(req, res, _) {
   let path = req.body.path;
-  console.log(path);
   let problem = readProblem(path);
   res.status(200).send(problem);
 });

@@ -60,7 +60,7 @@ const writeSourceCodeToFile = (sourceCode, language, dirPath) => {
 const getTestCases = (problemId) => {
     // remove the trailing file extension
     problemId = problemId.replace(".md", ".js")
-    let module = path.join(__dirname, '..', 'solution', problemId);
+    let module = path.join(__dirname, '..', 'problems', problemId);
     if (!fs.existsSync(module)) throw new Error('A solution for the given problem does not exist! Try again later.\n');
     return require(module);
 };
