@@ -55,11 +55,20 @@ function selectProblem(event) {
     xhr.open("POST", "/problem");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onload = function() {
-        let problem = JSON.parse(xhr.responseText);
-        document.getElementById("problem").innerHTML = problem.problem;
+        let problem = xhr.responseText;
+        let viewer = document.getElementById("problem-viewer");
+        let md = markdownit();
+        let html = md.render(problem);
+        // html = html.replace(/\$(.*)\$/g, "\\[ $1 \\]")
+        // console.log(html.replace(/\$(.*)\$/g, "\\\[ $1 \\\]"))
+        // console.log(katex.renderToString(html.replace(/\$(.*)\$/g, "\\\[ $1 \\\] ")));
+        // html = katex.renderToString(html);
+        let relative = path.split('/problems')[1];
+        viewer.innerHTML = `<p class="problem-header">${relative}</p>` + html;
     }
-    xhr.send(JSON.stringify({path: path}));    
+    xhr.send(JSON.stringify({path: path}));
 }
+
 
 
 

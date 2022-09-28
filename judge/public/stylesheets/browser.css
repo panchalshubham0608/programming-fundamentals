@@ -2,6 +2,7 @@
 .problem-browser {
     padding: 20px;
     background-color: #eeeeee;
+    overflow-y: scroll;
 }
 .accordian-item-file-name {
     font-weight: bold;

@@ -13,7 +13,7 @@ router.post('/problem', function(req, res, _) {
   let path = req.body.path;
   console.log(path);
   let problem = readProblem(path);
-  res.status(200).send({problem});
+  res.status(200).send(problem);
 });
 
 // export the router
