@@ -1,0 +1,14 @@
+
+.problem-browser {
+    padding: 20px;
+    background-color: #eeeeee;
+}
+.accordian-item-file-name {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.accordian-item-file-name img {
+    width: 15px;
+    height: 15px;
+}

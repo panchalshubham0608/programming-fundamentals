@@ -1,0 +1,14 @@
+main {
+    height: 100%;
+}
+.main-container {
+    width: 100%;
+    display: flex;
+    border: 1px solid black;
+    height: 100%;
+}
+
+.main-container > div {
+    flex: 1;
+    border: 1px solid black;
+}
