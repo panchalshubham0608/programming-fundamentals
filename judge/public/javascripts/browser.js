@@ -66,7 +66,13 @@ function selectProblem(event) {
         let relative = path.split('/problems/')[1];
         viewer.innerHTML = `<p class="problem-header" id="problemId">${relative}</p>` + html;
         document.getElementById(`runCodeBtn`).disabled = false;
+        hideLoader();
     }
+    xhr.onerror = function() {
+        alert("Error while fetching problem");
+        hideLoader();
+    }
+    showLoader();
     xhr.send(JSON.stringify({path: path}));
 }
 

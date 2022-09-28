@@ -15,8 +15,10 @@
     <link rel='stylesheet' href='/stylesheets/index.css' />
     <link rel='stylesheet' href='/stylesheets/problem-viewer.css' />
     <link rel='stylesheet' href='/stylesheets/editor.css' />
+    <link rel='stylesheet' href='/stylesheets/loader.css' />
   </head>
   <body>
+    <%- include('./loader.ejs') %>
     <main>
       <div class="main-container">
         <!-- The problem browser -->
@@ -61,6 +63,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js" integrity="sha512-SYfDUYPg5xspsG6OOpXU366G8SZsdHOhqk/icdrYJ2E/WKZxPxze7d2HD3AyXpT7U22PZ5y74xRpqZ6A2bJ+kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js" integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz" crossorigin="anonymous"></script>
     <script src="//ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/loader.js"></script>
     <script src="/javascripts/editor.js"></script>
     <script src="/javascripts/browser.js"></script>
   </body>
