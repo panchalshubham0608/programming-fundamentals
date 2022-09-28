@@ -17,3 +17,16 @@
     background-color: #ededed;
     padding: 10px;
 }
+
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+#editor {
+    border: 1px solid black;
+    flex: 1;
+    /* height: 100%; */
+}
+

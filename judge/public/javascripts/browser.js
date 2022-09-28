@@ -63,8 +63,9 @@ function selectProblem(event) {
         // console.log(html.replace(/\$(.*)\$/g, "\\\[ $1 \\\]"))
         // console.log(katex.renderToString(html.replace(/\$(.*)\$/g, "\\\[ $1 \\\] ")));
         // html = katex.renderToString(html);
-        let relative = path.split('/problems')[1];
-        viewer.innerHTML = `<p class="problem-header">${relative}</p>` + html;
+        let relative = path.split('/problems/')[1];
+        viewer.innerHTML = `<p class="problem-header" id="problemId">${relative}</p>` + html;
+        document.getElementById(`runCodeBtn`).disabled = false;
     }
     xhr.send(JSON.stringify({path: path}));
 }

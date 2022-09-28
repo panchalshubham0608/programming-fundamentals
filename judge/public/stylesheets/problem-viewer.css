@@ -1,0 +1,18 @@
+
+#problem-viewer pre {
+    background-color: #ededed;
+    padding: 10px;
+}
+
+#problem-viewer table, #problem-viewer th, #problem-viewer td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#problem-viewer table {
+    margin-bottom: 10px;
+}
+
+#problem-viewer th, #problem-viewer td {
+    padding: 5px;
+}
