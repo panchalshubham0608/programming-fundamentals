@@ -115,7 +115,7 @@ const executeSourceCode = ({sourceCode, language, problemId, timeout = 1000}) =>
                     input: testCase.input,
                     timeout: timeout
                 });
-                if (runOutput.toString().trim() !== testCase.output) {
+                if (runOutput.toString().trim() !== testCase.output.trim()) {
                     // output is incorrect
                     result.push({
                         status: 'WA',
@@ -147,7 +147,8 @@ const executeSourceCode = ({sourceCode, language, problemId, timeout = 1000}) =>
                     result.push({
                         status: 'RE',
                         input: testCase.input,
-                        output: err.message
+                        output: err.message,
+                        expectedOutput: testCase.output
                     });    
                 }
             }
@@ -157,6 +158,12 @@ const executeSourceCode = ({sourceCode, language, problemId, timeout = 1000}) =>
         return {
             status: 'OK',
             testCases: result
+        };
+    } catch (err) {
+        // some error occured
+        return {
+            status: 'error',
+            message: err.message
         };
     } finally {
         // delete the directory

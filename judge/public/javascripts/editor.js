@@ -35,7 +35,6 @@ function readable(code) {
 // displays the output
 function displayOutput(result) {
     let output = document.getElementById('output');
-    console.log(result);
     if (result.status === 'error') {
         output.innerHTML = 
         `
@@ -55,34 +54,42 @@ function displayOutput(result) {
         let html = ``;
         for (let i = 0; i < result.testCases.length; i++) {
             let tc = result.testCases[i];
-            html += 
-            `
-            <div class="test-case">
-                <div class="test-case-header text-${tc.status === 'AC' ? 'success' : 'error'}">
-                    <p>Test Case ${i + 1}: ${readable(tc.status)}</p>
-                </div>
-                <div class="test-case-body">
+            html += `
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading-${i}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${i}" aria-expanded="false" aria-controls="flush-collapse-${i}">
+                    <p class="text-${tc.status === 'AC' ? 'success' : 'error'}">Test Case ${i + 1}: ${readable(tc.status)}</p>
+                </button>
+                </h2>
+                <div id="flush-collapse-${i}" class="accordion-collapse collapse" aria-labelledby="flush-heading-${i}" data-bs-parent="#testCases">
+                <div class="accordion-body">
                     <div class="test-case-input">
-                        <p>Input</p>
+                        <p><strong>Input</strong></p>
                         <p>${sanitize(tc.input)}</p>
                     </div>
                     <div class="test-case-output">
-                        <p>Output</p>
+                        <p><strong>Output</strong></p>
                         <p>${sanitize(tc.output)}</p>
                     </div>
                     <div class="test-case-expected-output">
-                        <p>Expected Output</p>
+                        <p><strong>Expected Output</strong></p>
                         <p>${sanitize(tc.expectedOutput)}</p>
-                    </div>
+                    </div>                
                 </div>
+            </div>            
             `
         }
-        output.innerHTML = html;
+        output.innerHTML = `
+            <div class="accordion accordion-flush" id="testCases">
+                ${html}
+            </div>
+        `;
     }
 }
 
 // handle the submit button
 function execute() {
+    document.getElementById('output').innerHTML = '';
     let problemIdContainer = document.getElementById('problemId');
     if (!problemIdContainer) {
         displayOutput({

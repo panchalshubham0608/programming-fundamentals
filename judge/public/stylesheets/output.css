@@ -9,6 +9,7 @@
 #output {
     font-family: monospace;
     font-size: 15px;
+    max-height: 200px;
 }
 
 .text-error {
