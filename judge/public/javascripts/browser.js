@@ -5,7 +5,9 @@ function makeUI(problem, depth) {
         if (name.endsWith(".md")) {
             return `<div class="accordian-item-file" style="margin-left: ${depth}px;">
                         <div class="accordian-item-file-name" data-path="${path}"
-                            onclick="javascript:selectProblem(event)">
+                            onclick="javascript:selectProblem(event)"
+                            id="${path}"
+                        >
                             <img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/code-512.png">
                             ${name}
                         </div>
@@ -18,7 +20,9 @@ function makeUI(problem, depth) {
         `<div class="accordian" style="margin-left: ${depth}px;">
             <div class="accordian-header">
                 <i class="fas fa-chevron-right" data-state="closed"
-                    onclick="javascript:toggle(event)"></i>
+                    onclick="javascript:toggle(event)"
+                    id="${problem.path ? problem.path : 'problems'}"
+                ></i>
                 <span>${problem.name}</span>
             </div>
             <div class="accordian-content d-none">
@@ -79,10 +83,31 @@ function selectProblem(event) {
     xhr.send(JSON.stringify({path: path}));
 }
 
-
+// selects the problem specified in the url
+function preSelectProblem() {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    let problemsDropdown = document.getElementById("problems");
+    if (!problemsDropdown)  return;
+    problemsDropdown.click();
+    let problem = params.problem;
+    if (!problem) return;
+    let parts = problem.split("/");
+    let path = "";
+    for (let part of parts) {
+        path += part;
+        let item = document.getElementById(path);
+        if (!item)  break;
+        item.click();
+        path += "/";
+    }
+}
 
 
 let browser = document.getElementById(`browser`);
 let problems = JSON.parse(browser.getAttribute(`data-problems`));
 // let problemSet = document.getElementById(`problemSet`);
 browser.innerHTML = makeUI(problems, 0);
+
+// select problem as specified in the URL
+preSelectProblem();
