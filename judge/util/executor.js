@@ -89,7 +89,7 @@ const getTestCases = (problemId) => {
 
 // Execute user's source code for given language
 // and validate the output against given problemId
-const executeSourceCode = ({sourceCode, language, problemId, timeout = 1000}) => {
+const executeSourceCode = ({sourceCode, language, problemId, timeout = 2*1000}) => {
     // get the test cases for given problemId
     let testCases = null;
     try {
