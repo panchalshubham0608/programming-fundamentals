@@ -37,8 +37,29 @@ const getExecuteCommands = (language) => {
                 compile: 'g++',
                 run: './a.out'
             }
+        case 'java':
+            return {
+                filename: 'Main',
+                ext: '.java',
+                compile: 'javac',
+                run: 'java Main'
+            }
+        case 'py':
+            return {
+                filename: 'main',
+                ext: '.py',
+                compile: null,
+                run: 'python3 main.py'
+            }
+        case 'js':
+            return {
+                filename: 'main',
+                ext: '.js',
+                compile: null,
+                run: 'node main.js'
+            }            
         default:
-            throw new Error('Invalid language');
+            throw new Error('Unsupported language');
     }
 }
 
@@ -51,7 +72,7 @@ const writeSourceCodeToFile = (sourceCode, language, dirPath) => {
     fs.writeFileSync(filePath, sourceCode);
     return {
         fileName,
-        compileCommand: `${props.compile} ${fileName}`,
+        compileCommand: props.compile ? `${props.compile} ${fileName}` : null,
         runCommand: props.run
     }
 };
