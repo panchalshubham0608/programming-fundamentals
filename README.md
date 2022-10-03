@@ -6,3 +6,4 @@ The repository contains topicwise practice problems that can be picked by any fr
 |02|Data types and variables|
 |03|Conditional statement (if-else)|
 |04|Iterative statement (while, for, do-while)|
+|05|Arrays|
