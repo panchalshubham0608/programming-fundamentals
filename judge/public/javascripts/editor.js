@@ -122,3 +122,18 @@ function execute() {
     showLoader();
     xhr.send(JSON.stringify({problemId: problemId, language: language, sourceCode: sourceCode}));    
 }
+
+
+// save the code to local storage when the editor changes
+editor.session.on('change', function() {    
+    let sourceCode = editor.getValue();
+    localStorage.setItem(`sourceCode`, sourceCode);
+});
+
+// load the code from local storage
+window.onload = function() {
+    let sourceCode = localStorage.getItem(`sourceCode`);
+    if (sourceCode) {
+        editor.setValue(sourceCode);
+    }
+}
